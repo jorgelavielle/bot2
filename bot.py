@@ -1,5 +1,7 @@
 import os
-from telegram.ext import Updater, MessageHandler, Filters
+from telegram import update
+from telegram.ext import Updater, MessageHandler, Filters, handler
+from telegram.ext.filters import UpdateFilter
 
 
 def process_message(update, context):
@@ -15,15 +17,16 @@ def process_message(update, context):
 
 if __name__ == '__main__':
 
-    updater = Updater(token='5051406874:AAFDWsR6U1TZQgfHDYeUNzlJn1R1cm3tPb4', use_context=True)
-
-       
-    dp = updater.dispatcher
+    updater = Updater(
+        token=os.environ['5051406874:AAFDWsR6U1TZQgfHDYeUNzlJn1R1cm3tPb4'], use_context=True)
+ 
+     
+    dp = Updater
     dp.add_handler(MessageHandler(
         filters=Filters.text, callback=process_message))
         
-    updater.start_polling()
+    update.Update.start_polling()
 
     print('Bot is polling')
 
-    updater.idle()
+    update.idle()

@@ -1,15 +1,16 @@
-[tool.poetry.]
-name = "jorgelavielle-bot2"
+[tool.poetry]
+name = "jorgelavielle-vituales-bot"
 version = "0.1.0"
 description = ""
-author = "jorgelavielle-bot2"
+authors = ["jorgelavielle <lavielle@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "3.10.1"
-python-telegram-bot = "13.9"
+python = "^3.10.1"
+python-telegram-bot = "^13.9"
+pillow = "^7.2.0"
 
 [tool.poetry.dev-dependencies]
 
 [build-system]
 requires = ["poetry>=0.12"]
-build-bakend = "poetry.masonry.api"
+build-backend = "poetry.masonry.api"
