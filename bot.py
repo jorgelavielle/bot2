@@ -1,8 +1,13 @@
 import os
-from telegram import update
-from telegram.ext import Updater, MessageHandler, Filters, handler
-from telegram.ext.filters import UpdateFilter
+from telegram.ext import Updater, MessageHandler, Filters
+from telethon import TelegramClient, events, sync
 
+
+api_id = 19408723
+api_hash = 'e61dd3478f77cc7d94282e1e4ef795c9'
+
+client = TelegramClient('session_name', api_id, api_hash)
+client.start()
 
 def process_message(update, context):
 
@@ -17,16 +22,15 @@ def process_message(update, context):
 
 if __name__ == '__main__':
 
-    updater = Updater(
-        token=os.environ['5051406874:AAFDWsR6U1TZQgfHDYeUNzlJn1R1cm3tPb4'], use_context=True)
- 
-     
-    dp = Updater
+    updater = Updater(token='5051406874:AAFDWsR6U1TZQgfHDYeUNzlJn1R1cm3tPb4', use_context=True)
+
+       
+    dp = updater.dispatcher
     dp.add_handler(MessageHandler(
         filters=Filters.text, callback=process_message))
         
-    update.Update.start_polling()
+    updater.start_polling()
 
     print('Bot is polling')
 
-    update.idle()
+    updater.idle()
